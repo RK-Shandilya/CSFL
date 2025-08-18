@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema({
-    name: {
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
         type: String,
         required: true
     },
@@ -24,6 +28,23 @@ const userSchema = mongoose.Schema({
         ref: "Player",
         default: []
     }],
+    isVerified: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+    otp: {
+        type: String,
+    },
+    otpExpiry: {
+        type: Date,
+    },
+    resetToken: {
+        type: String,
+    },
+    resetTokenExpiry: {
+        type: Date,
+    }
 })
 
 const User = mongoose.model("User", userSchema);

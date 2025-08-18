@@ -1,7 +1,7 @@
 export const zodValidator = (schema) => 
     (req, res, next) => {
         try {
-            schema.parse({...req.body,});
+            schema.parse({...req.body, ...(req.params || {}),});
             next();
         } catch (error) {
             res.status(400).json({
